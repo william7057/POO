@@ -9,6 +9,7 @@ namespace POO_AlumnosProfesores.Models
     class Alumno : Persona
     {
         public string email { get; set; }
+        public string NickName { get; set; }
         private string Inasistencias { get; set; }
 
         public string ListaInasistencias() {
@@ -21,6 +22,26 @@ namespace POO_AlumnosProfesores.Models
             Nombre = nombre;
             Apellido = apellido;
         }
+
+        public override string ConstruirResumen()
+        {
+            return $"{NombreCompleto},{NickName},{teléfono}";
+        }
+
+        //public override string NombreCompleto => base.NombreCompleto;
+        public override string NombreCompleto
+        {
+
+            get
+            {
+
+                return base.NombreCompleto.ToUpper();
+
+
+            }
+        }
+
+
 
     }
 }

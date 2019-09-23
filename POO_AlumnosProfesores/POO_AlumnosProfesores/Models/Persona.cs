@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POO_AlumnosProfesores.Models
 {
-    class Persona
+    public abstract class  Persona:IEnteInstituto
     {
         public static int ContadorPersonas = 0;
         public int Id { get; set; }
@@ -14,7 +14,7 @@ namespace POO_AlumnosProfesores.Models
         public string Apellido { get; set; }
         public short Edad { get; set; }
         public string teléfono { get; set; }
-        public string NombreCompleto
+        public virtual string NombreCompleto
         {
 
             get {
@@ -24,11 +24,26 @@ namespace POO_AlumnosProfesores.Models
 
             }
         }
+         public abstract string ConstruirResumen();
 
         public Persona()
         {
             ContadorPersonas++;
         }
-   
+
+
+
+        public string CodigoInterno
+        {
+            get;
+            set;
+        }       
+
+        public string ConstruirLlaveSecreta(string nombreEnte)
+        {
+            var rnd = new Random();
+            
+            return rnd.Next(1, 999915312).ToString();
+        }
     }
 }
